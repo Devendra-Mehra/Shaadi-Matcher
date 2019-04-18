@@ -1,0 +1,25 @@
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //support
+    implementation deps.support.appCompat
+    implementation deps.support.material
+    implementation deps.support.cardview
+    implementation deps.support.constraintlayout
+    //square
+    implementation deps.square.retrofit
+    implementation deps.square.gsonConverter
+    implementation deps.square.okhttp
+    implementation deps.square.retrofit2adapter
+    implementation deps.square.picasso
+
+    //stetho
+    implementation deps.facebook.stetho
+    implementation deps.facebook.stetho_okhttp3
+    //reactive
+    implementation deps.reactive.rxjava
+    implementation deps.reactive.rxAndroid
+
+    testImplementation deps.test.junit
+    androidTestImplementation deps.test.testRunner
+    androidTestImplementation deps.test.expressoCore
+}
