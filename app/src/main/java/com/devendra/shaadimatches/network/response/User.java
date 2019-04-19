@@ -12,9 +12,10 @@ public class User {
     private String email;
     @SerializedName("dob")
     private DateOfBirth dateOfBirth;
-    private Registered registered;
-    private Picture picture;
+    @SerializedName("registered")
+    private Registered createdDay;
 
+    private Picture picture;
 
     public String getGender() {
         return gender;
@@ -56,20 +57,20 @@ public class User {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public Registered getRegistered() {
-        return registered;
-    }
-
-    public void setRegistered(Registered registered) {
-        this.registered = registered;
-    }
-
     public Picture getPicture() {
         return picture;
     }
 
     public void setPicture(Picture picture) {
         this.picture = picture;
+    }
+
+    public Registered getCreatedDay() {
+        return createdDay;
+    }
+
+    public void setCreatedDay(Registered createdDay) {
+        this.createdDay = createdDay;
     }
 
     @Override
@@ -80,7 +81,7 @@ public class User {
                 ", location=" + location +
                 ", email='" + email + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
-                ", registered=" + registered +
+                ", createdDay=" + createdDay +
                 ", picture=" + picture +
                 '}';
     }

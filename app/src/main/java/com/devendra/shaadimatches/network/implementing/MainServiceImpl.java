@@ -1,7 +1,6 @@
 package com.devendra.shaadimatches.network.implementing;
 
 import com.devendra.shaadimatches.callback.DataCallback;
-import com.devendra.shaadimatches.constants.Constants;
 import com.devendra.shaadimatches.network.response.MainResponse;
 import com.devendra.shaadimatches.network.service.MainService;
 import com.devendra.shaadimatches.singleinstance.ApiServiceInstance;

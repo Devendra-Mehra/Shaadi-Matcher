@@ -1,6 +1,10 @@
 package com.devendra.shaadimatches.main.contract;
 
 import com.devendra.shaadimatches.base.BasePresenter;
+import com.devendra.shaadimatches.callback.DataCallback;
+import com.devendra.shaadimatches.main.view.UserEntity;
+
+import java.util.List;
 
 /**
  * Created by Devendra Mehra on 4/19/2019.
@@ -10,9 +14,9 @@ public interface MainContract {
 
     interface View {
 
-        void setData();
+        void setUsers(List<UserEntity> userEntities);
 
-        void toggleVisibility(boolean show);
+        void toggleUsersVisibility(boolean show);
 
         void toggleLoading(boolean isLoading);
 
@@ -25,6 +29,6 @@ public interface MainContract {
     }
 
     interface Model {
-        void fetchData();
+        void fetchUsers(DataCallback<List<UserEntity>> callback);
     }
 }
