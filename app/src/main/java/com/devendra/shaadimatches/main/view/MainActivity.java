@@ -1,4 +1,4 @@
-package com.devendra.shaadimatches.main;
+package com.devendra.shaadimatches.main.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
