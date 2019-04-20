@@ -19,18 +19,6 @@ public class MainResponse {
         return users;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
-
-    public Info getInfo() {
-        return info;
-    }
-
-    public void setInfo(Info info) {
-        this.info = info;
-    }
-
     @Override
     public String toString() {
         return "MainResponse{" +

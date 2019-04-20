@@ -1,5 +1,7 @@
 package com.devendra.shaadimatches.main.model;
 
+import android.util.Log;
+
 import com.devendra.shaadimatches.callback.DataCallback;
 import com.devendra.shaadimatches.constants.Constants;
 import com.devendra.shaadimatches.main.view.UserEntity;
@@ -74,6 +76,7 @@ public class RefactorMainUser {
                 }
                 callback.onSuccess(userEntities);
             } catch (Exception e) {
+                Log.d("Log20", "Exception " + e);
                 callback.onError(e.getMessage());
             }
 

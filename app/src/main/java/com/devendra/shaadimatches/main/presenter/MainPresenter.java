@@ -59,7 +59,8 @@ public class MainPresenter implements MainContract.Presenter {
 
     @Override
     public boolean isViewAvailable() {
-        return false;
+        return view != null;
+
     }
 
     @Override

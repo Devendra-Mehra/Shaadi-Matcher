@@ -1,5 +1,7 @@
 package com.devendra.shaadimatches.network.implementing;
 
+import android.util.Log;
+
 import com.devendra.shaadimatches.callback.DataCallback;
 import com.devendra.shaadimatches.network.response.MainResponse;
 import com.devendra.shaadimatches.network.service.MainService;
@@ -43,6 +45,7 @@ public class MainServiceImpl {
 
                     @Override
                     public void onError(Throwable e) {
+                        Log.d("Log20", "MainServiceImpl " + e.getMessage());
                         callBack.onError(e.getMessage());
                     }
                 });

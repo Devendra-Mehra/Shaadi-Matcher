@@ -1,5 +1,7 @@
 package com.devendra.shaadimatches.main.model;
 
+import android.util.Log;
+
 import com.devendra.shaadimatches.callback.DataCallback;
 import com.devendra.shaadimatches.main.contract.MainContract;
 import com.devendra.shaadimatches.main.view.UserEntity;

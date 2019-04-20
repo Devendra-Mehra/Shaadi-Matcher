@@ -5,7 +5,6 @@ package com.devendra.shaadimatches.constants;
  */
 public class Constants {
 
-    public static final String LIMIT = "10";
     public static final String COMA = ", ";
 
 }

@@ -3,6 +3,8 @@ package com.devendra.shaadimatches.main.view;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.devendra.shaadimatches.R;
 import com.devendra.shaadimatches.databinding.MainViewItemBinding;
@@ -29,7 +31,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
     }
 
     public interface ItemListener {
-        void onClick(boolean clicked);
+        void onConnect();
+
+        void onDecline(View viewToAnimate, int position);
+
     }
 
     @NonNull
@@ -56,9 +61,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
         private MainViewHolder(MainViewItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
-
-            binding.fabConnect.setOnClickListener(v -> listener.onClick(true));
-            binding.fabDecline.setOnClickListener(v -> listener.onClick(false));
+            binding.fabConnect.setOnClickListener(v -> listener.onConnect());
+            binding.fabDecline.setOnClickListener(v -> listener.onDecline(binding.fabDecline, getAdapterPosition()));
         }
 
         private void bind(UserEntity current) {
@@ -77,4 +81,14 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
         this.userEntities = userEntities;
         notifyDataSetChanged();
     }
+
+    public void removeUser(View viewToAnimate, int position) {
+        Animation animation = AnimationUtils.loadAnimation(viewToAnimate.getContext()
+                , android.R.anim.slide_out_right);
+        viewToAnimate.startAnimation(animation);
+        userEntities.remove(position);
+        notifyItemRemoved(position);
+    }
+
+
 }
