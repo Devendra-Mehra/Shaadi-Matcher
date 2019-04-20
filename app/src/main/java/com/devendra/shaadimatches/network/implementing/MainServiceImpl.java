@@ -45,7 +45,6 @@ public class MainServiceImpl {
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.d("Log20", "MainServiceImpl " + e.getMessage());
                         callBack.onError(e.getMessage());
                     }
                 });

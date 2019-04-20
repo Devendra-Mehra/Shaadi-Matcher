@@ -8,6 +8,7 @@ import android.view.animation.AnimationUtils;
 
 import com.devendra.shaadimatches.R;
 import com.devendra.shaadimatches.databinding.MainViewItemBinding;
+import com.devendra.shaadimatches.utils.CircleTransform;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -67,11 +68,14 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
 
         private void bind(UserEntity current) {
             binding.tvCreatedDate.setText(current.getRegistered());
-            Picasso.get().load(current.getPicture()).into(binding.ivProfileImage);
             binding.tvName.setText(current.getFullName());
             binding.tvLocation.setText(current.getLocation());
             binding.tvAge.setText(current.getAge());
             binding.tvEmail.setText(current.getEmail());
+            Picasso.get()
+                    .load(current.getPicture())
+                    .transform(new CircleTransform())
+                    .into(binding.ivProfileImage);
         }
 
     }

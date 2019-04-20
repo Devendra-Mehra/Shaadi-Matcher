@@ -44,7 +44,7 @@ public class RefactorMainUser {
                     String street = "";
                     String city = "";
                     String state = "";
-                    String postalCode = user.getLocation().getPostcode();
+                    String postalCode = "";
                     if (user.getLocation().getStreet() != null) {
                         street = user.getLocation().getStreet();
                     }
@@ -54,18 +54,21 @@ public class RefactorMainUser {
                     if (user.getLocation().getCity() != null) {
                         state = user.getLocation().getState();
                     }
+                    if (user.getLocation().getPostcode() != null) {
+                        postalCode = user.getLocation().getPostcode();
+                    }
                     entity.setLocation(street.concat(Constants.COMA)
                             .concat(city).concat(Constants.COMA)
                             .concat(state).concat(Constants.COMA)
                             .concat(city).concat(Constants.COMA)
-                            .concat(String.valueOf(postalCode)));
+                            .concat(postalCode));
                     entity.setEmail(user.getEmail());
-                    entity.setAge(user.getDateOfBirth().getAge());
+                    entity.setAge("(AGE : " + user.getDateOfBirth().getAge() + ")");
 
                     String createdStatus;
-                    if (user.getCreatedDay().getAge().equals("0")||
+                    if (user.getCreatedDay().getAge().equals("0") ||
                             user.getCreatedDay().getAge().equals("1")) {
-                        createdStatus = "today";
+                        createdStatus = "few hours ago";
                     } else if (user.getCreatedDay().getAge().equals("2")) {
                         createdStatus = "yesterday";
                     } else {
@@ -77,7 +80,6 @@ public class RefactorMainUser {
                 }
                 callback.onSuccess(userEntities);
             } catch (Exception e) {
-                Log.d("Log20", "Exception " + e);
                 callback.onError(e.getMessage());
             }
 

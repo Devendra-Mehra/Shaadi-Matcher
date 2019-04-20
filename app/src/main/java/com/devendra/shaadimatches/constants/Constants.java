@@ -6,5 +6,8 @@ package com.devendra.shaadimatches.constants;
 public class Constants {
 
     public static final String COMA = ", ";
+    public static final String CIRCLE = "circle";
+    public static final String AGE_START = "(AGE : ";
+    public static final String AGE_END = ")";
 
 }

@@ -31,14 +31,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         context = this;
         presenter = new MainPresenter(this);
         initRecyclerView();
-
-        binding.btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                presenter.create();
-
-            }
-        });
+        presenter.create();
 
         mainAdapter.setListener(new MainAdapter.ItemListener() {
             @Override
