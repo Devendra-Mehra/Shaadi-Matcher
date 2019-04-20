@@ -9,7 +9,7 @@ public class DateOfBirth {
 
     @SerializedName("date")
     private String dateOfBirth;
-    private int age;
+    private String age;
 
     public String getDateOfBirth() {
         return dateOfBirth;
@@ -19,11 +19,11 @@ public class DateOfBirth {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 

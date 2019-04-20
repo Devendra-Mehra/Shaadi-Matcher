@@ -9,7 +9,7 @@ public class UserEntity {
     private String fullName;
     private String location;
     private String email;
-    private int age;
+    private String age;
     private String registered;
     private String picture;
 
@@ -45,12 +45,11 @@ public class UserEntity {
         this.email = email;
     }
 
-
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 

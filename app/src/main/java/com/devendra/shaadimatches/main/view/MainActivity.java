@@ -6,16 +6,16 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.devendra.shaadimatches.R;
 import com.devendra.shaadimatches.databinding.ActivityMainBinding;
 import com.devendra.shaadimatches.main.contract.MainContract;
 import com.devendra.shaadimatches.main.presenter.MainPresenter;
 
 import java.util.List;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 public class MainActivity extends AppCompatActivity implements MainContract.View {
 
@@ -32,7 +32,13 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         presenter = new MainPresenter(this);
         initRecyclerView();
 
-        presenter.create();
+        binding.btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.create();
+
+            }
+        });
 
         mainAdapter.setListener(new MainAdapter.ItemListener() {
             @Override

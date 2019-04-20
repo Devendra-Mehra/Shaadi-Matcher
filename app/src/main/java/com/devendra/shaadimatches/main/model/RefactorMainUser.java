@@ -44,7 +44,7 @@ public class RefactorMainUser {
                     String street = "";
                     String city = "";
                     String state = "";
-                    int postalCode = user.getLocation().getPostcode();
+                    String postalCode = user.getLocation().getPostcode();
                     if (user.getLocation().getStreet() != null) {
                         street = user.getLocation().getStreet();
                     }
@@ -63,9 +63,10 @@ public class RefactorMainUser {
                     entity.setAge(user.getDateOfBirth().getAge());
 
                     String createdStatus;
-                    if (user.getCreatedDay().getAge() == 1) {
+                    if (user.getCreatedDay().getAge().equals("0")||
+                            user.getCreatedDay().getAge().equals("1")) {
                         createdStatus = "today";
-                    } else if (user.getCreatedDay().getAge() == 2) {
+                    } else if (user.getCreatedDay().getAge().equals("2")) {
                         createdStatus = "yesterday";
                     } else {
                         createdStatus = user.getCreatedDay().getAge() + " days ago";

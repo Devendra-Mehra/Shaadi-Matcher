@@ -6,7 +6,7 @@ package com.devendra.shaadimatches.network.response;
 public class Registered {
 
     private String date;
-    private int age;
+    private String age;
 
     public String getDate() {
         return date;
@@ -16,11 +16,11 @@ public class Registered {
         this.date = date;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
