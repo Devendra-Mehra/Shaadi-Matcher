@@ -10,6 +10,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.devendra.shaadimatches.R;
 import com.devendra.shaadimatches.callback.DataCallback;
@@ -38,6 +39,14 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         initRecyclerView();
         presenter.create();
 
+        mainAdapter.setListener(clicked -> {
+            if (clicked) {
+                Toast.makeText(context, getString(R.string.connect_clicked),
+                        Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(context, "Removed", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void initRecyclerView() {
@@ -68,6 +77,11 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     public void toggleErrorVisibility(boolean show) {
         binding.textViewErrorMsg.setVisibility(show ? View.VISIBLE : View.GONE);
 
+    }
+
+    @Override
+    public void setError(String error) {
+        binding.textViewErrorMsg.setText(error);
     }
 
 

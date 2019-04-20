@@ -46,6 +46,5 @@ public class MainServiceImpl {
                         callBack.onError(e.getMessage());
                     }
                 });
-
     }
 }

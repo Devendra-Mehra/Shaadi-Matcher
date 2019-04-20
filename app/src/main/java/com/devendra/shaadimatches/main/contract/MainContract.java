@@ -22,6 +22,8 @@ public interface MainContract {
 
         void toggleErrorVisibility(boolean show);
 
+        void setError(String error);
+
     }
 
     interface Presenter extends BasePresenter {

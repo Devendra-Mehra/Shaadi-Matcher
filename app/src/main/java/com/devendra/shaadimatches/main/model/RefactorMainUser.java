@@ -22,9 +22,8 @@ public class RefactorMainUser {
 
     public void refactorUserResponse(DataCallback<List<UserEntity>> callback) {
         if (mainResponse.getUsers().size() > 0) {
-            List<UserEntity> userEntities = new ArrayList<>();
-
             try {
+                List<UserEntity> userEntities = new ArrayList<>();
                 for (User user : mainResponse.getUsers()) {
                     UserEntity entity = new UserEntity();
 
@@ -70,7 +69,7 @@ public class RefactorMainUser {
                         createdStatus = user.getCreatedDay().getAge() + " days ago";
                     }
                     entity.setRegistered(createdStatus);
-                    entity.setPicture(user.getPicture().getMediumUrl());
+                    entity.setPicture(user.getPicture().getLargeUrl());
                     userEntities.add(entity);
                 }
                 callback.onSuccess(userEntities);

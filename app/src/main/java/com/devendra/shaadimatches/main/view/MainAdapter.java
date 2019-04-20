@@ -1,11 +1,11 @@
 package com.devendra.shaadimatches.main.view;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.devendra.shaadimatches.R;
 import com.devendra.shaadimatches.databinding.MainViewItemBinding;
-import com.devendra.shaadimatches.singleinstance.PicassoInstance;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
     }
 
     public interface ItemListener {
-        void onRowClick();
+        void onClick(boolean clicked);
     }
 
     @NonNull
@@ -57,20 +57,19 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
             super(binding.getRoot());
             this.binding = binding;
 
+            binding.fabConnect.setOnClickListener(v -> listener.onClick(true));
+            binding.fabDecline.setOnClickListener(v -> listener.onClick(false));
         }
 
         private void bind(UserEntity current) {
-
-            binding.tvGender.setText(current.getGender());
+            binding.tvCreatedDate.setText(current.getRegistered());
+            Picasso.get().load(current.getPicture()).into(binding.ivProfileImage);
+            binding.tvName.setText(current.getFullName());
+            binding.tvLocation.setText(current.getLocation());
             binding.tvAge.setText(current.getAge());
             binding.tvEmail.setText(current.getEmail());
-            binding.tvEmail.setText(current.getEmail());
-            binding.tvLocation.setText(current.getLocation());
-            binding.tvRegistered.setText(current.getRegistered());
-
-         /*   PicassoInstance.getPicassoInstance()
-                    .get().load(current.getPicture()).into(binding.ivProfile);*/
         }
+
     }
 
     public void setUsers(List<UserEntity> userEntities) {

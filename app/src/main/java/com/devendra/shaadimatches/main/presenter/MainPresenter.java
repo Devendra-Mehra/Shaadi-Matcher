@@ -50,6 +50,7 @@ public class MainPresenter implements MainContract.Presenter {
                     view.toggleUsersVisibility(false);
                     view.toggleErrorVisibility(true);
                     view.toggleLoading(false);
+                    view.setError(error);
                 }
             }
         });
