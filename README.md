@@ -4,11 +4,11 @@
 > Shaadi-Matcher is a sample app that showcases the use of MVP architecture to build maintainable & scalable Android apps.<br>
 <img src="/assets/studio version.svg"/> <img src="/assets/minSdk.svg"/> <img src="/assets/compileSdk.svg"/> <img src="/assets/gradle version.svg"/> <img src="/assets/java version.svg"/>
 ## What does it do?
-It is a very straightforward app with a monolith screen.
+It is a very straightforward app with a single screen.
 <br>The screen displays a list of users matched for you & clicking on the decline it removes the match from your list and on connects it connect you to the particular user.
 ## Appearance?
 <p align="center">
-  <img src="/assets/snap.jpg" alt="Screenshots"  height="650" width="300"/>
+    <img src="/assets/snap.png" alt="Screenshots"  height="650" width="330"/>
 </p>
 
 ## Architecture
@@ -20,18 +20,18 @@ This app essentially serve the **Single responsibility** principle [read here](h
 >> main user list
 >>> contract<br>
 >>> model<br>
+>>> network<br>
 >>> presenter<br>
 >>> view<br>
+
+This app uses a combination of `package-by-feature` and `package-by-layer`. The top level packages are feature based. Inside each `feature-package`, the code is split into different packages based on the layer.This structure has worked for me and I have been using it for some time now. Read [this](http://www.javapractices.com/topic/TopicAction.do?Id=205) blogpost to know more about packaging structures.
+
 
 ## Data Source
 All of the Users data is fetched from [RandomUserAPI](https://randomuser.me/).
 
-
-## Interesting things to lookout for
-* **Stetho** - This is one of the libraries I add to every new project I create. Stetho makes `DEBUGGING` super simple.
-* **Data Binding** - If you are still writing boilerplate code to bind views yourself, you need to checkout [DataBinding](https://developer.android.com/topic/libraries/data-binding/index.html) right now. Personally, I use it to just bind the views as I am against the idea of adding logic to `XMLs`, but DataBinding can do a lot more than just bind views.
-* **Vector Drawables** - `STOP` using multiple versions of the same image to support the different density buckets. Enable [Vector Drawables](https://developer.android.com/guide/topics/graphics/vector-drawable-resources.html) in your app-level `build.gradle` and start using them to reduce the size of the `APK` and also your work of creating/managing versions of the same image.
-* **Screener** - Create wonderful screenshots with just a few clicks on your Android phone. Click [here](https://play.google.com/store/apps/details?id=de.toastcode.screener&hl=en) to download the app.
+## Data Flow diagram
+<img src="/assets/data flow.PNG" align="center" />
 
 
 ### Libraries Used
