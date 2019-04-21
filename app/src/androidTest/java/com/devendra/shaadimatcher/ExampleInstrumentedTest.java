@@ -1,4 +1,4 @@
-package com.devendra.shaadimatches;
+package com.devendra.shaadimatcher;
 
 import android.content.Context;
 
