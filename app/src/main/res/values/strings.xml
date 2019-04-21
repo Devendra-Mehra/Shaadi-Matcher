@@ -1,5 +1,13 @@
 <resources>
-    <string name="app_name">Shaadi Matche</string>
+    <string name="app_name">Shaadi Matcher</string>
     <string name="profile_image_description">Users profile image</string>
     <string name="connect_clicked">You will soon be connected  to the profile</string>
+    <string name="age"> (AGE: %d)</string>
+    <string name="comma">, </string>
+    <string name="zero">0</string>
+    <string name="one">1</string>
+    <string name="two">2</string>
+    <string name="today">today</string>
+    <string name="yesterday">yesterday</string>
+    <string name="some_day_ago">%d days ago</string>
 </resources>

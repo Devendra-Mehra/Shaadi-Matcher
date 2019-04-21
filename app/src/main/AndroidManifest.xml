@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.devendra.shaadimatches">
+    package="com.devendra.shaadimatcher">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".application.AppApplication"
+        android:name="com.devendra.shaadimatcher.application.AppApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".main.view.MainActivity">
+        <activity android:name="com.devendra.shaadimatcher.users.view.UserActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
