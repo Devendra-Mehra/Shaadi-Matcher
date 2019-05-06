@@ -10,23 +10,24 @@ import com.devendra.shaadimatcher.utils.StringHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.reactivex.disposables.CompositeDisposable;
+import javax.inject.Inject;
 
 /**
  * Created by Devendra Mehra on 4/19/2019.
  */
 public class UserPresenter implements UserContract.Presenter {
 
-    private UserContract.View view;
+    @Inject
     private UserContract.Model model;
-    private CompositeDisposable compositeDisposable;
+    private UserContract.View view;
     private StringHelper stringHelper;
 
-    public UserPresenter(UserContract.View view, StringHelper stringHelper) {
+    @Inject
+    public UserPresenter(UserContract.View view, StringHelper
+            stringHelper, UserModel userModel) {
         this.view = view;
         this.stringHelper = stringHelper;
-        compositeDisposable = new CompositeDisposable();
-        model = new UserModel(compositeDisposable);
+        this.model = userModel;
     }
 
 
@@ -88,6 +89,6 @@ public class UserPresenter implements UserContract.Presenter {
     @Override
     public void onDestroy() {
         view = null;
-        compositeDisposable.clear();
+        model.destroy();
     }
 }

@@ -3,33 +3,44 @@ package com.devendra.shaadimatcher.users.view;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.devendra.shaadimatcher.R;
-import com.devendra.shaadimatcher.databinding.ActivityUsersBinding;
 import com.devendra.shaadimatcher.users.contract.UserContract;
 import com.devendra.shaadimatcher.users.presenter.UserPresenter;
-import com.devendra.shaadimatcher.utils.StringHelper;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjection;
+
 public class UserActivity extends AppCompatActivity implements UserContract.View {
 
-    private ActivityUsersBinding binding;
-    private UserPresenter presenter;
-    private UserAdapter userAdapter;
+
+    @Inject
+    public UserPresenter presenter;
+
+    public UserAdapter userAdapter;
+
     private Context context;
+    private RecyclerView recyclerView;
+    private ProgressBar progressBarLoading;
+    private TextView textViewErrorMsg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_users);
+        setContentView(R.layout.activity_users);
         context = this;
-        presenter = new UserPresenter(this, new StringHelper(context));
+        initViewElements();
         initRecyclerView();
         presenter.create();
 
@@ -48,11 +59,18 @@ public class UserActivity extends AppCompatActivity implements UserContract.View
 
     }
 
+    private void initViewElements() {
+
+        recyclerView = findViewById(R.id.recycler_view);
+        progressBarLoading = findViewById(R.id.progress_bar_loading);
+        textViewErrorMsg = findViewById(R.id.text_view_error_msg);
+    }
+
     private void initRecyclerView() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
-        binding.recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setLayoutManager(linearLayoutManager);
         userAdapter = new UserAdapter();
-        binding.recyclerView.setAdapter(userAdapter);
+        recyclerView.setAdapter(userAdapter);
     }
 
     @Override
@@ -62,24 +80,24 @@ public class UserActivity extends AppCompatActivity implements UserContract.View
 
     @Override
     public void toggleUsersVisibility(boolean show) {
-        binding.recyclerView.setVisibility(show ? View.VISIBLE : View.GONE);
+        recyclerView.setVisibility(show ? View.VISIBLE : View.GONE);
     }
 
     @Override
     public void toggleLoading(boolean isLoading) {
-        binding.progressBarLoading.setVisibility(isLoading ? View.VISIBLE : View.GONE);
+        progressBarLoading.setVisibility(isLoading ? View.VISIBLE : View.GONE);
 
     }
 
     @Override
     public void toggleErrorVisibility(boolean show) {
-        binding.textViewErrorMsg.setVisibility(show ? View.VISIBLE : View.GONE);
+        textViewErrorMsg.setVisibility(show ? View.VISIBLE : View.GONE);
 
     }
 
     @Override
     public void setError(String error) {
-        binding.textViewErrorMsg.setText(error);
+        textViewErrorMsg.setText(error);
     }
 
 

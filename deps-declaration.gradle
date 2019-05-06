@@ -11,37 +11,44 @@ def versions = [
         'facebook'        : '1.5.0',
         'rxjava'          : '2.2.6',
         'rxandroid'       : '2.1.0',
-        'picasso'         : '2.71828'
+        'picasso'         : '2.71828',
+        'dagger'          : '2.22.1'
 ]
 
 
 def deps = [
-        build           : [
+        build   : [
                 'minSdk'      : 19,
                 'compileSdk'  : 28,
                 'gradlePlugin': "com.android.tools.build:gradle:${versions.androidPlugin}",
         ],
-        support         : [
+        support : [
                 'appCompat'       : "androidx.appcompat:appcompat:${versions.appCompat}",
                 'material'        : "com.google.android.material:material:${versions.material}",
                 'cardview'        : "androidx.cardview:cardview:${versions.buildTools}",
                 'constraintlayout': "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}"
         ],
 
-        square          : [
+        square  : [
                 'retrofit'        : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
                 'gsonConverter'   : "com.squareup.retrofit2:converter-gson:${versions.retrofit}",
                 'okhttp'          : "com.squareup.okhttp3:okhttp:${versions.okhttp}",
                 'retrofit2adapter': "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofit}",
                 'picasso'         : "com.squareup.picasso:picasso:${versions.picasso}"
         ],
-        facebook        : [
+        facebook: [
                 'stetho'        : "com.facebook.stetho:stetho:${versions.facebook}",
                 'stetho_okhttp3': "com.facebook.stetho:stetho-okhttp3:${versions.facebook}"
         ],
-        reactive        : [
+        reactive: [
                 'rxjava'   : "io.reactivex.rxjava2:rxjava:${versions.rxjava}",
                 'rxAndroid': "io.reactivex.rxjava2:rxandroid:${versions.rxandroid}"
+        ],
+        google  : [
+                'dagger'                : "com.google.dagger:dagger:${versions.dagger}",
+                'daggerAndroidSupport'  : "com.google.dagger:dagger-android-support:${versions.dagger}",
+                'daggerProcessor'       : "com.google.dagger:dagger-compiler:${versions.dagger}",
+                'daggerAndroidProcessor': "com.google.dagger:dagger-android-processor:${versions.dagger}"
         ]
 ]
 

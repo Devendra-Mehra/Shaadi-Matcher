@@ -33,5 +33,6 @@ public interface UserContract {
 
     interface Model {
         void fetchUsers(DataCallback<List<User>> callback);
+        void destroy();
     }
 }

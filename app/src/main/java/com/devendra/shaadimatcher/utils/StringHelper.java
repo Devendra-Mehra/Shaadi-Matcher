@@ -4,12 +4,15 @@ import android.content.Context;
 
 import com.devendra.shaadimatcher.R;
 
+import javax.inject.Inject;
+
 /**
  * Created by Devendra Mehra on 4/21/2019.
  */
 public class StringHelper {
     private Context context;
 
+    @Inject
     public StringHelper(Context context) {
         this.context = context;
     }

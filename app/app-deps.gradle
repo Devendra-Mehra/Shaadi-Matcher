@@ -1,5 +1,4 @@
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
     //support
     implementation deps.support.appCompat
     implementation deps.support.material
@@ -11,12 +10,17 @@ dependencies {
     implementation deps.square.okhttp
     implementation deps.square.retrofit2adapter
     implementation deps.square.picasso
-
     //stetho
     implementation deps.facebook.stetho
     implementation deps.facebook.stetho_okhttp3
     //reactive
     implementation deps.reactive.rxjava
     implementation deps.reactive.rxAndroid
+    //dagger
+    implementation deps.google.dagger
+    implementation deps.google.daggerAndroidSupport
+    annotationProcessor deps.google.daggerProcessor
+    annotationProcessor deps.google.daggerAndroidProcessor
+
 
 }

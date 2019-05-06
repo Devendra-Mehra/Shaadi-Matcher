@@ -5,18 +5,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.devendra.shaadimatcher.R;
-import com.devendra.shaadimatcher.databinding.MainViewItemBinding;
 import com.devendra.shaadimatcher.utils.CircleTransform;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
+
+import javax.inject.Inject;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MainViewHolder> {
 
@@ -41,8 +44,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MainViewHolder
     @NonNull
     @Override
     public MainViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MainViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),
-                R.layout.main_view_item, parent, false));
+        return new MainViewHolder(LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.main_view_item, parent, false));
     }
 
     @Override
@@ -57,24 +60,37 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MainViewHolder
     }
 
     public class MainViewHolder extends RecyclerView.ViewHolder {
-        MainViewItemBinding binding;
 
-        private MainViewHolder(MainViewItemBinding binding) {
-            super(binding.getRoot());
-            this.binding = binding;
-            binding.fabConnect.setOnClickListener(v -> listener.onConnect());
-            binding.fabDecline.setOnClickListener(v -> listener.onDecline(binding.fabDecline, getAdapterPosition()));
+        private FloatingActionButton fabConnect, fabDecline;
+        private ImageView ivProfileImage;
+        private TextView tvCreatedDate, tvNameAge, tvLocation, tvEmail;
+
+        private MainViewHolder(View view) {
+            super(view);
+
+            fabConnect = view.findViewById(R.id.fab_connect);
+            fabDecline = view.findViewById(R.id.fab_decline);
+            ivProfileImage = view.findViewById(R.id.iv_profile_image);
+
+            tvCreatedDate = view.findViewById(R.id.tv_created_date);
+            tvNameAge = view.findViewById(R.id.tv_name_age);
+            tvLocation = view.findViewById(R.id.tv_location);
+            tvEmail = view.findViewById(R.id.tv_email);
+
+            fabConnect.setOnClickListener(v -> listener.onConnect());
+            fabDecline.setOnClickListener(v -> listener.onDecline(fabDecline,
+                    getAdapterPosition()));
         }
 
         private void bind(DisplayableUser current) {
-            binding.tvCreatedDate.setText(current.getRegistrationPeriod());
-            binding.tvNameAge.setText(current.getFullNameAge());
-            binding.tvLocation.setText(current.getLocation());
-            binding.tvEmail.setText(current.getEmail());
+            tvCreatedDate.setText(current.getRegistrationPeriod());
+            tvNameAge.setText(current.getFullNameAge());
+            tvLocation.setText(current.getLocation());
+            tvEmail.setText(current.getEmail());
             Picasso.get()
                     .load(current.getPicture())
                     .transform(new CircleTransform())
-                    .into(binding.ivProfileImage);
+                    .into(ivProfileImage);
         }
 
     }

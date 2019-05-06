@@ -1,12 +1,13 @@
 package com.devendra.shaadimatcher.users.network.implementation;
 
 import com.devendra.shaadimatcher.callback.DataCallback;
-import com.devendra.shaadimatcher.users.network.response.UserResponse;
 import com.devendra.shaadimatcher.users.network.response.User;
+import com.devendra.shaadimatcher.users.network.response.UserResponse;
 import com.devendra.shaadimatcher.users.network.service.UserService;
-import com.devendra.shaadimatcher.instance.ApiServiceInstance;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -19,12 +20,13 @@ import io.reactivex.schedulers.Schedulers;
  */
 public class UserServiceImpl {
 
-    private UserService userService;
+    @Inject
+    public UserService userService;
     private CompositeDisposable compositeDisposable;
 
+    @Inject
     public UserServiceImpl(CompositeDisposable compositeDisposable) {
         this.compositeDisposable = compositeDisposable;
-        userService = ApiServiceInstance.getUserServiceInstance();
     }
 
     public void getUsers(DataCallback<List<User>> callBack) {
